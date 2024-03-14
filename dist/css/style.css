@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap");
+/*
+Mixin to convert colors into either css custom props or utilities
+*/
+/*
+Mixin to convert typescale into either css custom props or utilities
+*/
+/*
+Mixin to convert font weights into either css custom props or utilities
+*/
+/* Mixin for large screens / desktop */
+/* Mixin for small screens / mobile */
+:root {
+  --clr-primary-800: hsl(176, 72%, 28%);
+  --clr-primary-400: hsl(176, 50%, 47%);
+  --clr-neutral-900: hsl(0, 0%, 0%);
+  --clr-neutral-400: hsl(0, 0%, 48%);
+  --clr-neutral-000: hsl(100, 100%, 100%);
+  --ff-primary: "Commissioner", sans-serif;
+  --fs-300: 1.5rem;
+  --fs-200: 1rem;
+  --fs-100: 0.875rem;
+  --ff-semibold: 600;
+  --ff-medium: 500;
+  --ff-regular: 400;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Full height by default */
+body,
+html {
+  height: 100%;
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Link reset */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Button reset */
+button {
+  border: none;
+  background: none;
+}
+
+.clr-primary-800 {
+  color: hsl(176, 72%, 28%);
+}
+
+.bg-primary-800 {
+  background-color: hsl(176, 72%, 28%);
+}
+
+.clr-primary-400 {
+  color: hsl(176, 50%, 47%);
+}
+
+.bg-primary-400 {
+  background-color: hsl(176, 50%, 47%);
+}
+
+.clr-neutral-900 {
+  color: hsl(0, 0%, 0%);
+}
+
+.bg-neutral-900 {
+  background-color: hsl(0, 0%, 0%);
+}
+
+.clr-neutral-400 {
+  color: hsl(0, 0%, 48%);
+}
+
+.bg-neutral-400 {
+  background-color: hsl(0, 0%, 48%);
+}
+
+.clr-neutral-000 {
+  color: hsl(100, 100%, 100%);
+}
+
+.bg-neutral-000 {
+  background-color: hsl(100, 100%, 100%);
+}
+
+.grid {
+  display: grid;
+  --_gap: var(--gap, 1rem);
+}
+
+.flex {
+  display: flex;
+  --_gap: var(--gap, 1rem);
+  gap: var(--_gap);
+}
+
+.container {
+  width: min(90rem, 90%);
+  margin-inline: auto;
+  padding-inline: 1rem;
+  border-inline: 3px solid firebrick;
+}
+
+.header {
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 2rem;
+}
+.header__logo {
+  width: 7rem;
+}
+
+.primary-navigation {
+  display: none;
+}
+@media (min-width: 42.5em) {
+  .primary-navigation {
+    display: block;
+  }
+}
+.primary-navigation__list {
+  --gap: 2rem;
+}
+
+.burger-menu {
+  cursor: pointer;
+}
+@media (min-width: 42.5em) {
+  .burger-menu {
+    display: none;
+  }
+}
+
+.hero-background {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+.hero-background__img {
+  width: 100%;
+}
+
+body {
+  font-family: var(--ff-primary);
+}
+/*# sourceMappingURL=style.css.map */

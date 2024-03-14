@@ -1,0 +1,13 @@
+@use "./abstracts/colors" as *;
+@use "./abstracts/fonts" as *;
+@use "./abstracts/typescale" as *; 
+@use "./abstracts/mixins" as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap');
+
+:root {
+    @include convert_colors($color-map: $colors);
+    --ff-primary: "Commissioner", sans-serif;
+    @include convert_typescale($typescale-map: $typescale);
+    @include convert_font-weights($font-weight-map: $font-weights);
+}

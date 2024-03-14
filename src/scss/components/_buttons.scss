@@ -1,0 +1,9 @@
+@use "./abstracts/mixins" as *;
+
+.burger-menu {
+    cursor: pointer;
+
+    @include mq_large-sreen() {
+        display: none;
+    }
+}

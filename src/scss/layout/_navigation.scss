@@ -1,0 +1,14 @@
+@use "./abstracts/mixins" as *;
+
+
+.primary-navigation {
+    display: none;
+
+    @include mq_large-sreen() {
+        display: block;
+    }
+
+    &__list {
+        --gap: 2rem;
+    }
+}

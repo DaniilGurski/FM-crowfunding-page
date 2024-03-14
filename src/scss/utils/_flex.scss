@@ -1,0 +1,5 @@
+.flex {
+    display: flex;
+    --_gap: var(--gap, 1rem);
+    gap: var(--_gap);
+}

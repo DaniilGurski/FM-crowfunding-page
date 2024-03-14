@@ -1,0 +1,71 @@
+/*
+Mixin to convert colors into either css custom props or utilities
+*/
+@mixin convert_colors($color-map, $action: "variables") {
+    @each $role, $shades in $color-map {
+
+        @each $lightness, $color in $shades {
+
+            @if $action == "classes" {
+                .clr-#{$role}-#{$lightness} {
+                    color: #{$color};
+                }
+
+                .bg-#{$role}-#{$lightness} {
+                    background-color: #{$color};
+                }
+                
+            } @else {
+                --clr-#{$role}-#{$lightness}: #{$color};
+            }
+        }
+    }
+}
+
+
+/*
+Mixin to convert typescale into either css custom props or utilities
+*/
+@mixin convert_typescale($typescale-map, $action: "variables") {
+    @each $size, $value in $typescale-map {
+        @if $action == "classes" {
+            .fs-#{$size} {
+                font-size: #{$value};
+            }
+        } @else {
+            --fs-#{$size}: #{$value};
+        }
+    }
+}
+
+
+/*
+Mixin to convert font weights into either css custom props or utilities
+*/
+@mixin convert_font-weights($font-weight-map, $action: "variables") {
+    @each $weight, $value in $font-weight-map {
+        @if $action == "classes" {
+            .ff-#{$weight} {
+                font-family: #{$value};
+            }
+        } @else {
+            --ff-#{$weight}: #{$value};
+        }
+    }
+}
+
+
+/* Mixin for large screens / desktop */
+@mixin mq_large_sreen($breakpoint: 42.5em) {
+    @media (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+
+/* Mixin for small screens / mobile */
+@mixin mq_small_screen($breakpoint: 42.5em) {
+    @media (max-width: $breakpoint) {
+        @content;
+    }
+}

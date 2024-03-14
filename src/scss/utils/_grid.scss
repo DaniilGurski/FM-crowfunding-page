@@ -1,0 +1,4 @@
+.grid {
+    display: grid;
+    --_gap: var(--gap, 1rem);
+}

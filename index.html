@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="dist/css/style.css">
+    <title>Crowfundning</title>
+</head>
+<body>
+    <div class="hero-background">
+        <picture>
+            <source srcset="dist/img/image-hero-desktop.webp" media="(min-width:42.5em)">
+            <source srcset="dist/img/image-hero-desktop.jpg" media="(min-width:42.5em)">
+            <source srcset="dist/img/image-hero-mobile.webp">
+
+            <img class="hero-background__img" src="dist/img/image-hero-mobile.jpg" alt="">
+        </picture>
+    </div>
+
+    <div class="container">
+        <header class="header flex">
+            <a class="header__logo" href="#"><img src="dist/img/logo.svg" alt="logo"></a>
+
+            <nav class="primary-navigation">
+                <ul class="primary-navigation__list clr-neutral-000 flex">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Discover</a></li>
+                    <li><a href="#">Get Started</a></li>
+                </ul>
+            </nav>
+
+            <button class="burger-menu" aria-label="menu" aria-expanded="false" aria-controls="primary-navigation__list">
+                <img src="dist/img/icon-hamburger.svg" alt="" srcset="">
+            </button>
+        </header>
+    </div>
+</body>
+</html>
