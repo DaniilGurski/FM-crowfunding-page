@@ -4,8 +4,7 @@
 @use "components";
 
 
-.hero-background {
-    position: absolute;
+.hero-section {
     width: 100%;
     z-index: -1;
 
@@ -16,5 +15,6 @@
 
 
 body {
+    background: var(--clr-neutral-200);
     font-family: var(--ff-primary);
 }

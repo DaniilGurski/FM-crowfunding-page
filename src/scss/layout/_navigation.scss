@@ -2,13 +2,44 @@
 
 
 .primary-navigation {
-    display: none;
+    &__list {
+        visibility: hidden;
+        flex-direction: column;
+        --gap: 0;
+        
+        position: absolute;
+        right: 0;
+        transform: translateY(30%);
+        
+        width: 100%;
 
-    @include mq_large-sreen() {
-        display: block;
+        border-radius: 0.5rem;
+        overflow: hidden;
+
+        
+        @include mq_large_screen() {
+            visibility: visible;
+            flex-direction: row;
+            --gap: 1rem;
+
+            position: relative;
+            transform: unset;
+
+            width: auto;
+        }
     }
 
-    &__list {
-        --gap: 2rem;
+
+    &__list-item {
+        background: var(--clr-neutral-000);
+
+        padding: 1rem 2rem;
+
+        @include mq_large_screen() {
+            font-weight: var(--fw-regular);
+            color: var(--clr-neutral-000);
+            background: none; 
+            padding: 0;
+        }
     }
 }

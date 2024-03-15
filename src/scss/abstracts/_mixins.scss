@@ -39,24 +39,25 @@ Mixin to convert typescale into either css custom props or utilities
 }
 
 
+
 /*
 Mixin to convert font weights into either css custom props or utilities
 */
 @mixin convert_font-weights($font-weight-map, $action: "variables") {
     @each $weight, $value in $font-weight-map {
         @if $action == "classes" {
-            .ff-#{$weight} {
-                font-family: #{$value};
+            .fw-#{$weight} {
+                font-weight: #{$value};
             }
         } @else {
-            --ff-#{$weight}: #{$value};
+            --fw-#{$weight}: #{$value};
         }
     }
 }
 
 
 /* Mixin for large screens / desktop */
-@mixin mq_large_sreen($breakpoint: 42.5em) {
+@mixin mq_large_screen($breakpoint: 42.5em) {
     @media (min-width: $breakpoint) {
         @content;
     }

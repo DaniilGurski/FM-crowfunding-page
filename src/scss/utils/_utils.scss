@@ -1,0 +1,8 @@
+@use "./abstracts/mixins" as *;
+@use "./abstracts/colors" as *;
+@use "./abstracts/fonts" as *;
+@use "./abstracts/typescale" as *;
+
+@include convert_colors($color-map: $colors, $action: "classes");
+@include convert_font-weights($font-weight-map: $font-weights, $action: "classes");
+@include convert_typescale($typescale-map: $typescale, $action: "classes");

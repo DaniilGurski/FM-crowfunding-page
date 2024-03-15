@@ -15,14 +15,17 @@ Mixin to convert font weights into either css custom props or utilities
   --clr-primary-400: hsl(176, 50%, 47%);
   --clr-neutral-900: hsl(0, 0%, 0%);
   --clr-neutral-400: hsl(0, 0%, 48%);
+  --clr-neutral-300: hsl(0, 0%, 94%);
+  --clr-neutral-200: hsl(0, 0%, 96%);
   --clr-neutral-000: hsl(100, 100%, 100%);
   --ff-primary: "Commissioner", sans-serif;
+  --fs-400: 1.75rem;
   --fs-300: 1.5rem;
   --fs-200: 1rem;
   --fs-100: 0.875rem;
-  --ff-semibold: 600;
-  --ff-medium: 500;
-  --ff-regular: 400;
+  --fw-semibold: 600;
+  --fw-medium: 500;
+  --fw-regular: 400;
 }
 
 /* Box sizing rules */
@@ -99,6 +102,7 @@ a {
 
 /* Button reset */
 button {
+  cursor: pointer;
   border: none;
   background: none;
 }
@@ -135,6 +139,22 @@ button {
   background-color: hsl(0, 0%, 48%);
 }
 
+.clr-neutral-300 {
+  color: hsl(0, 0%, 94%);
+}
+
+.bg-neutral-300 {
+  background-color: hsl(0, 0%, 94%);
+}
+
+.clr-neutral-200 {
+  color: hsl(0, 0%, 96%);
+}
+
+.bg-neutral-200 {
+  background-color: hsl(0, 0%, 96%);
+}
+
 .clr-neutral-000 {
   color: hsl(100, 100%, 100%);
 }
@@ -143,25 +163,58 @@ button {
   background-color: hsl(100, 100%, 100%);
 }
 
+.fw-semibold {
+  font-weight: 600;
+}
+
+.fw-medium {
+  font-weight: 500;
+}
+
+.fw-regular {
+  font-weight: 400;
+}
+
+.fs-400 {
+  font-size: 1.75rem;
+}
+
+.fs-300 {
+  font-size: 1.5rem;
+}
+
+.fs-200 {
+  font-size: 1rem;
+}
+
+.fs-100 {
+  font-size: 0.875rem;
+}
+
 .grid {
   display: grid;
-  --_gap: var(--gap, 1rem);
+  gap: var(--gap, 1rem);
 }
 
 .flex {
   display: flex;
-  --_gap: var(--gap, 1rem);
-  gap: var(--_gap);
+  gap: var(--gap, 1rem);
 }
 
 .container {
-  width: min(90rem, 90%);
+  width: min(50rem, 90%);
   margin-inline: auto;
-  padding-inline: 1rem;
-  border-inline: 3px solid firebrick;
+  padding-inline: 0rem;
 }
 
 .header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: min(90rem, 90%);
+  z-index: 900;
+  margin-inline: auto;
   align-items: center;
   justify-content: space-between;
   padding-block: 2rem;
@@ -170,37 +223,165 @@ button {
   width: 7rem;
 }
 
-.primary-navigation {
-  display: none;
+.primary-navigation__list {
+  visibility: hidden;
+  flex-direction: column;
+  --gap: 0;
+  position: absolute;
+  right: 0;
+  transform: translateY(30%);
+  width: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 @media (min-width: 42.5em) {
-  .primary-navigation {
-    display: block;
+  .primary-navigation__list {
+    visibility: visible;
+    flex-direction: row;
+    --gap: 1rem;
+    position: relative;
+    transform: unset;
+    width: auto;
   }
 }
-.primary-navigation__list {
-  --gap: 2rem;
+.primary-navigation__list-item {
+  background: var(--clr-neutral-000);
+  padding: 1rem 2rem;
+}
+@media (min-width: 42.5em) {
+  .primary-navigation__list-item {
+    font-weight: var(--fw-regular);
+    color: var(--clr-neutral-000);
+    background: none;
+    padding: 0;
+  }
 }
 
-.burger-menu {
-  cursor: pointer;
+.riser {
+  --gap: 1rem;
 }
+.riser__block {
+  background: var(--clr-neutral-000);
+  color: var(--clr-neutral-400);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--clr-neutral-300);
+}
+.riser__header {
+  --gap: 3rem;
+  position: relative;
+  justify-content: center;
+  flex-direction: column;
+}
+.riser__mastercraft-logo {
+  width: 50px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.riser__header-title {
+  --gap: 0.5rem;
+  text-align: center;
+  flex-direction: column;
+}
+.riser__header-options {
+  justify-content: center;
+  --gap: 1rem;
+}
+@media (min-width: 42.5em) {
+  .riser__header-options {
+    --gap: 0;
+    justify-content: space-between;
+  }
+}
+.riser__fund {
+  --gap: 2rem;
+}
+.riser__fund-column-group {
+  justify-content: center;
+}
+@media (min-width: 42.5em) {
+  .riser__fund-column-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.riser__fund-column {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.riser__fund-column::after {
+  content: "";
+  width: 50%;
+  height: 0.031rem;
+  background-color: var(--clr-neutral-400);
+  margin-top: 1.4rem;
+}
+
 @media (min-width: 42.5em) {
   .burger-menu {
     display: none;
   }
 }
 
-.hero-background {
-  position: absolute;
+.button {
+  --_button-padding-x: 1em;
+  --_button-padding-y: calc(var(--_button-padding-x) * 2);
+  background: var(--clr-primary-400);
+  color: var(--clr-neutral-000);
+  font-weight: var(--fw-semibold);
+  padding: var(--_button-padding-x) var(--_button-padding-y);
+  border-radius: 5rem;
+  text-wrap: nowrap;
+}
+.button--bookmark {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: var(--clr-neutral-300);
+  color: var(--clr-neutral-400);
+  padding: 0;
+  padding-right: var(--_button-padding-y);
+}
+@media (max-width: 42.5em) {
+  .button--bookmark {
+    background: none;
+    padding: 0;
+  }
+}
+@media (max-width: 42.5em) {
+  .button__text--bookmark {
+    display: none;
+  }
+}
+
+.fund-progress {
+  width: 100%;
+  height: 1rem;
+  margin-block: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.fund-progress::-webkit-progress-bar {
+  background-color: var(--clr-neutral-300);
+  border-radius: 2rem;
+}
+.fund-progress::-webkit-progress-value {
+  background-color: var(--clr-primary-400);
+  border-radius: 2rem;
+}
+
+.hero-section {
   width: 100%;
   z-index: -1;
 }
-.hero-background__img {
+.hero-section__img {
   width: 100%;
 }
 
 body {
+  background: var(--clr-neutral-200);
   font-family: var(--ff-primary);
 }
 /*# sourceMappingURL=style.css.map */

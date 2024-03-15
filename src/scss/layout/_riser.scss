@@ -1,0 +1,84 @@
+@use "./abstracts/mixins" as *;
+
+.riser {
+    --gap: 1rem;
+
+    &__block {
+        background: var(--clr-neutral-000);
+        color: var(--clr-neutral-400);
+
+        padding: 2.5rem;
+
+        border-radius: 1rem;
+        border: 1px solid var(--clr-neutral-300);
+    }
+    
+
+    &__header {
+        --gap: 3rem;
+
+        position: relative;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+
+    &__mastercraft-logo {
+        width: 50px;
+
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+
+    }
+    
+
+    &__header-title {
+        --gap: 0.5rem;
+        text-align: center;
+        flex-direction: column;
+    }
+
+
+    &__header-options {
+        justify-content: center;
+        --gap: 1rem;
+
+        @include mq_large_screen() {
+            --gap: 0;
+            justify-content: space-between;
+        }
+    }
+
+
+    &__fund {
+        --gap: 2rem;
+    }
+
+
+    &__fund-column-group {
+        justify-content: center;
+
+        @include mq_large_screen() {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+
+    &__fund-column {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        // underline 
+        &::after {
+            content: "";
+            width: 50%;
+            height: 0.031rem;
+            background-color: var(--clr-neutral-400);
+            margin-top: 1.4rem;
+        }
+    }
+}

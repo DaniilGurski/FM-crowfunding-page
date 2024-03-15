@@ -1,9 +1,49 @@
 @use "./abstracts/mixins" as *;
 
-.burger-menu {
-    cursor: pointer;
 
-    @include mq_large-sreen() {
+.burger-menu {
+    @include mq_large_screen() {
         display: none;
+    }
+}
+
+
+.button {
+    --_button-padding-x: 1em;
+    --_button-padding-y: calc(var(--_button-padding-x) * 2);
+
+
+    background: var(--clr-primary-400);
+    color: var(--clr-neutral-000);
+
+    font-weight: var(--fw-semibold);
+    
+    padding: var(--_button-padding-x) var(--_button-padding-y);
+    border-radius: 5rem;
+    text-wrap: nowrap;
+    
+
+    &--bookmark {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+
+        background: var(--clr-neutral-300);
+        color: var(--clr-neutral-400);
+
+        padding: 0;
+        padding-right: var(--_button-padding-y);
+
+        @include mq_small_screen() {
+            background: none;
+            padding: 0;
+        }
+    }
+
+
+    &__text--bookmark {
+        @include mq_small_screen() {
+            display: none;
+        }
     }
 }

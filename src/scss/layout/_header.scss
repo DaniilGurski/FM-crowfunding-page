@@ -1,4 +1,12 @@
 .header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: min(90rem, 90%);
+    z-index: 900;
+    margin-inline: auto;
+
     align-items: center;
     justify-content: space-between;
     padding-block: 2rem;
