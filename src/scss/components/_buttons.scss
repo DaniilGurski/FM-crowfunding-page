@@ -11,9 +11,9 @@
 .button {
     --_button-padding-x: 1em;
     --_button-padding-y: calc(var(--_button-padding-x) * 2);
+    --_button-bg: var(--button-bg, var(--clr-primary-400));
 
-
-    background: var(--clr-primary-400);
+    background: var(--_button-bg);
     color: var(--clr-neutral-000);
 
     font-weight: var(--fw-semibold);

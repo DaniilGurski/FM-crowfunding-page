@@ -191,6 +191,12 @@ button {
   font-size: 0.875rem;
 }
 
+.heading {
+  color: var(--clr-neutral-900);
+  font-family: var(--ff-primary);
+  text-wrap: nowrap;
+}
+
 .grid {
   display: grid;
   gap: var(--gap, 1rem);
@@ -259,8 +265,11 @@ button {
 
 .riser {
   --gap: 1rem;
+  /* First block */
+  /* Second block */
+  /* Third block */
 }
-.riser__block {
+.riser__block, .riser-reward {
   background: var(--clr-neutral-000);
   color: var(--clr-neutral-400);
   padding: 2.5rem;
@@ -318,6 +327,68 @@ button {
   background-color: var(--clr-neutral-400);
   margin-top: 1.4rem;
 }
+.riser__about-text {
+  margin-block: 1.5rem;
+}
+.riser__rewards {
+  --gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.riser-reward {
+  --_heading-color: var(--heading-color, var(--clr-neutral-900));
+  --_pledge-color: var(--pledge-color, var(--clr-primary-400));
+  --_text-color: var(--text-color);
+  --_button-color: var(--button-color, var(--button-bg));
+  border-color: var(--clr-neutral-400);
+  padding: 1.75rem;
+  color: var(--_text-color);
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+}
+.riser-reward--out {
+  --heading-color: hsl(0, 0%, 45%);
+  --pledge-color: hsl(176, 50%, 70%);
+  --text-color: hsl(0, 0%, 75%);
+  --button-color: var(--text-color);
+  border-color: var(--clr-neutral-300);
+}
+.riser-reward__heading {
+  color: var(--_heading-color);
+}
+.riser-reward__pledge {
+  color: var(--_pledge-color);
+}
+.riser-reward__amount-value {
+  color: var(--_heading-color);
+}
+.riser-reward__button {
+  --button-bg: var(--_button-color);
+}
+@media (min-width: 42.5em) {
+  .riser-reward {
+    grid-template-columns: 2fr 3fr 2fr;
+    grid-template-areas: "heading ... pledge" "desc desc desc" "left ... button";
+  }
+  .riser-reward__heading {
+    grid-area: heading;
+  }
+  .riser-reward__pledge {
+    text-align: right;
+    grid-area: pledge;
+  }
+  .riser-reward__description {
+    text-align: justify;
+    grid-area: desc;
+  }
+  .riser-reward__amount-left {
+    grid-area: left;
+  }
+  .riser-reward__button {
+    grid-area: button;
+  }
+}
 
 @media (min-width: 42.5em) {
   .burger-menu {
@@ -328,7 +399,8 @@ button {
 .button {
   --_button-padding-x: 1em;
   --_button-padding-y: calc(var(--_button-padding-x) * 2);
-  background: var(--clr-primary-400);
+  --_button-bg: var(--button-bg, var(--clr-primary-400));
+  background: var(--_button-bg);
   color: var(--clr-neutral-000);
   font-weight: var(--fw-semibold);
   padding: var(--_button-padding-x) var(--_button-padding-y);

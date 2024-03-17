@@ -6,3 +6,10 @@
 @include convert_colors($color-map: $colors, $action: "classes");
 @include convert_font-weights($font-weight-map: $font-weights, $action: "classes");
 @include convert_typescale($typescale-map: $typescale, $action: "classes");
+
+
+.heading {
+    color: var(--clr-neutral-900);
+    font-family: var(--ff-primary);
+    text-wrap: nowrap;
+}

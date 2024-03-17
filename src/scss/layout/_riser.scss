@@ -3,6 +3,7 @@
 .riser {
     --gap: 1rem;
 
+    /* First block */
     &__block {
         background: var(--clr-neutral-000);
         color: var(--clr-neutral-400);
@@ -30,8 +31,6 @@
         top: 0;
         left: 50%;
         transform: translate(-50%, -50%);
-        
-
     }
     
 
@@ -53,6 +52,7 @@
     }
 
 
+    /* Second block */
     &__fund {
         --gap: 2rem;
     }
@@ -79,6 +79,102 @@
             height: 0.031rem;
             background-color: var(--clr-neutral-400);
             margin-top: 1.4rem;
+        }
+    }
+
+
+    /* Third block */
+    &__about-text {
+        margin-block: 1.5rem;
+    }
+
+
+    &__rewards {
+        --gap: 1.75rem;
+        margin-top: 2rem;
+    }
+}
+
+
+.riser-reward {
+    --_heading-color: var(--heading-color, var(--clr-neutral-900));
+    --_pledge-color: var(--pledge-color, var(--clr-primary-400));
+    --_text-color: var(--text-color);
+    --_button-color: var(--button-color, var(--button-bg));
+
+    @extend .riser__block;
+    border-color: var(--clr-neutral-400);
+    padding: 1.75rem;
+    color: var(--_text-color);
+
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+
+    
+    &--out {
+        --heading-color: hsl(0, 0%, 45%);
+        --pledge-color: hsl(176, 50%, 70%);
+        --text-color: hsl(0, 0%, 75%);
+        --button-color: var(--text-color);
+
+        border-color: var(--clr-neutral-300);
+    }
+
+    // Riser card parts 
+    &__heading {
+        color: var(--_heading-color);
+    }
+
+
+    &__pledge {
+        color: var(--_pledge-color);
+    }
+
+
+    &__amount-value {
+        color: var(--_heading-color);
+    }
+
+
+    &__button {
+        --button-bg: var(--_button-color);
+    }
+
+
+    // Changing layout for riser reward block
+    @include mq_large_screen() {
+        grid-template-columns: 2fr 3fr 2fr;
+        grid-template-areas:
+        "heading ... pledge"
+        "desc desc desc"
+        "left ... button";
+
+
+        &__heading {
+            grid-area: heading;
+        }
+    
+
+        &__pledge {
+            text-align: right;
+            grid-area: pledge; 
+        }
+    
+
+        &__description {
+            text-align: justify;
+            grid-area: desc;
+        }
+    
+
+        &__amount-left {
+            grid-area: left;
+        }
+        
+
+        &__button {
+            grid-area: button;
         }
     }
 }
