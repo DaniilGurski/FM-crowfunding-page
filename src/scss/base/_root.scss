@@ -10,4 +10,9 @@
     --ff-primary: "Commissioner", sans-serif;
     @include convert_typescale($typescale-map: $typescale);
     @include convert_font-weights($font-weight-map: $font-weights);
+
+
+    @include mq_small_screen() {
+        
+    }
 }
