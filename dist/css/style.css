@@ -27,7 +27,6 @@ Mixin to convert font weights into either css custom props or utilities
   --fw-medium: 500;
   --fw-regular: 400;
 }
-
 /* Box sizing rules */
 *,
 *::before,
@@ -197,6 +196,10 @@ button {
   text-wrap: nowrap;
 }
 
+.none {
+  display: none;
+}
+
 .grid {
   display: grid;
   gap: var(--gap, 1rem);
@@ -335,24 +338,66 @@ button {
   margin-top: 2rem;
 }
 
+/* 
+Out of stock colors:
+    --heading-color: hsl(0, 0%, 45%);
+    --pledge-color: hsl(176, 50%, 70%);
+    --text-color: hsl(0, 0%, 75%);
+    --button-color: var(--text-color);
+*/
 .riser-reward {
   --_heading-color: var(--heading-color, var(--clr-neutral-900));
   --_pledge-color: var(--pledge-color, var(--clr-primary-400));
   --_text-color: var(--text-color);
-  --_button-color: var(--button-color, var(--button-bg));
   border-color: var(--clr-neutral-400);
   padding: 1.75rem;
   color: var(--_text-color);
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 1rem;
 }
 .riser-reward--out {
   --heading-color: hsl(0, 0%, 45%);
   --pledge-color: hsl(176, 50%, 70%);
   --text-color: hsl(0, 0%, 75%);
-  --button-color: var(--text-color);
+  --button-bg: var(--text-color);
   border-color: var(--clr-neutral-300);
+}
+.riser-reward__main-content {
+  display: grid;
+  grid-template-areas: "header" "desc" "amount" "button";
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+}
+@media (min-width: 42.5em) {
+  .riser-reward__main-content {
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: "header header header" "desc desc desc" "amount ... button";
+  }
+  .riser-reward__main-content .riser-reward__header {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+.riser-reward__main-content--select {
+  align-items: center;
+  grid-template-columns: auto 1fr 1fr;
+  grid-template-areas: "check header ..." "desc desc desc" "amount ... ...";
+}
+@media (min-width: 42.5em) {
+  .riser-reward__main-content--select {
+    grid-template-columns: auto 16rem 2fr 1fr;
+    grid-template-areas: "check header ... amount" "... desc desc desc";
+    gap: 0.5rem 1rem;
+  }
+}
+.riser-reward__checkbox {
+  grid-area: checkbox;
+}
+.riser-reward__header {
+  --gap: 0.5rem;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  grid-area: header;
+  white-space: nowrap;
 }
 .riser-reward__heading {
   color: var(--_heading-color);
@@ -360,34 +405,18 @@ button {
 .riser-reward__pledge {
   color: var(--_pledge-color);
 }
-.riser-reward__amount-value {
+.riser-reward__description {
+  color: var(--_text-color);
+  grid-area: desc;
+}
+.riser-reward__amount-left {
+  grid-area: amount;
+}
+.riser-reward__amount-left span {
   color: var(--_heading-color);
 }
 .riser-reward__button {
-  --button-bg: var(--_button-color);
-}
-@media (min-width: 42.5em) {
-  .riser-reward {
-    grid-template-columns: 2fr 3fr 2fr;
-    grid-template-areas: "heading ... pledge" "desc desc desc" "left ... button";
-  }
-  .riser-reward__heading {
-    grid-area: heading;
-  }
-  .riser-reward__pledge {
-    text-align: right;
-    grid-area: pledge;
-  }
-  .riser-reward__description {
-    text-align: justify;
-    grid-area: desc;
-  }
-  .riser-reward__amount-left {
-    grid-area: left;
-  }
-  .riser-reward__button {
-    grid-area: button;
-  }
+  grid-area: button;
 }
 
 @media (min-width: 42.5em) {
@@ -428,6 +457,12 @@ button {
   }
 }
 
+.radio {
+  width: 1.75rem;
+  aspect-ratio: 1;
+  accent-color: var(--clr-primary-400);
+}
+
 .fund-progress {
   width: 100%;
   height: 1rem;
@@ -442,6 +477,23 @@ button {
 .fund-progress::-webkit-progress-value {
   background-color: var(--clr-primary-400);
   border-radius: 2rem;
+}
+
+.modal {
+  --gap: 1.75rem;
+  font-size: var(--fs-100);
+  border: none;
+  color: var(--clr-neutral-400);
+  padding: 1.75rem;
+  border-radius: 1rem;
+  width: min(90%, 40rem);
+}
+.modal__header-top {
+  justify-content: space-between;
+}
+.modal__riser-reward {
+  display: flex;
+  flex-direction: column;
 }
 
 .hero-section {

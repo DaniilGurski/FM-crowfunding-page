@@ -96,32 +96,101 @@
 }
 
 
+/* 
+Out of stock colors:
+    --heading-color: hsl(0, 0%, 45%);
+    --pledge-color: hsl(176, 50%, 70%);
+    --text-color: hsl(0, 0%, 75%);
+    --button-color: var(--text-color);
+*/
+
+
 .riser-reward {
     --_heading-color: var(--heading-color, var(--clr-neutral-900));
     --_pledge-color: var(--pledge-color, var(--clr-primary-400));
     --_text-color: var(--text-color);
-    --_button-color: var(--button-color, var(--button-bg));
 
     @extend .riser__block;
     border-color: var(--clr-neutral-400);
     padding: 1.75rem;
     color: var(--_text-color);
 
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 1rem;
 
-    
     &--out {
         --heading-color: hsl(0, 0%, 45%);
         --pledge-color: hsl(176, 50%, 70%);
         --text-color: hsl(0, 0%, 75%);
-        --button-color: var(--text-color);
+        --button-bg: var(--text-color);
 
         border-color: var(--clr-neutral-300);
     }
+    
 
-    // Riser card parts 
+    &__main-content {
+        display: grid;
+        grid-template-areas:
+        "header"
+        "desc"
+        "amount"
+        "button";
+        grid-template-columns: 1fr;
+        row-gap: 1rem;
+
+
+        // change layout for the content inside of reward card
+        @include mq_large_screen() {
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-areas:
+            "header header header"
+            "desc desc desc"
+            "amount ... button";
+    
+    
+            .riser-reward__header {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+
+        &--select {
+            align-items: center;
+            grid-template-columns: auto 1fr 1fr;
+
+            grid-template-areas:
+            "check header ..."
+            "desc desc desc"
+            "amount ... ...";
+
+            
+            
+            @include mq_large_screen() {
+                grid-template-columns: auto 16rem 2fr 1fr;
+                grid-template-areas:
+                "check header ... amount"
+                "... desc desc desc";
+                gap: 0.5rem 1rem;
+            }
+        }
+    }
+
+
+    &__checkbox {
+        grid-area: checkbox;
+    }
+
+
+    &__header {
+        --gap: 0.5rem;
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-between;
+        grid-area: header;
+
+        white-space: nowrap;
+    }
+
+
     &__heading {
         color: var(--_heading-color);
     }
@@ -132,49 +201,23 @@
     }
 
 
-    &__amount-value {
+    &__description {
+        color: var(--_text-color);
+        grid-area: desc;
+    }
+
+
+    &__amount-left {
+        grid-area: amount;
+    }
+
+
+    &__amount-left span {
         color: var(--_heading-color);
     }
 
 
     &__button {
-        --button-bg: var(--_button-color);
-    }
-
-
-    // Changing layout for riser reward block
-    @include mq_large_screen() {
-        grid-template-columns: 2fr 3fr 2fr;
-        grid-template-areas:
-        "heading ... pledge"
-        "desc desc desc"
-        "left ... button";
-
-
-        &__heading {
-            grid-area: heading;
-        }
-    
-
-        &__pledge {
-            text-align: right;
-            grid-area: pledge; 
-        }
-    
-
-        &__description {
-            text-align: justify;
-            grid-area: desc;
-        }
-    
-
-        &__amount-left {
-            grid-area: left;
-        }
-        
-
-        &__button {
-            grid-area: button;
-        }
+        grid-area: button;
     }
 }
